@@ -16,6 +16,7 @@ import AllToys from './pages/AllToys/AllToys.jsx';
 import AddToy from './pages/AddToy/AddToy.jsx';
 import MyToys from './pages/MyToys/MyToys.jsx';
 import NotFound from './pages/NotFound/NotFound.jsx';
+import AuthProvider from './Providers/AuthProvider.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -55,6 +56,8 @@ const router = createBrowserRouter([
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <AuthProvider>
       <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )

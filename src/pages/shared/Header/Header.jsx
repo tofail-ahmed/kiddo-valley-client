@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Nav from './Nav';
 import logo from '../../../assets/Valley.png'
+import { AuthContext } from '../../../Providers/AuthProvider';
 
 const Header = () => {
 
+      const { user, logOut } = useContext(AuthContext)
 
 
+      console.log(user);
 
+      const handleLogout = () => {
+            logOut()
+                  .then(() => { })
+                  .catch(error => console.log(error))
 
-
-
+      }
 
 
 
@@ -48,7 +54,16 @@ const Header = () => {
                               </ul>
                         </div>
                         <div className="navbar-end">
-                       <Link className='text-md font-bold btn btn-info' to={'/login'}>  Login   </Link>
+
+
+
+                              {
+                                    user ? <><p>{user.displayName}</p>
+                                          <img className='w-1/4 tooltip'  data-tip={user.displayName} src={user.photoURL} alt="" />
+                                          <button className='btn btn-error' onClick={handleLogout}>LogOut</button>
+                                    </>
+                                          : <Link className='text-md font-bold btn btn-info' to={'/login'}>  Login   </Link>
+                              }
                         </div>
                   </div>
             </div>
