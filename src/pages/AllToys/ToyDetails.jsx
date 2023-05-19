@@ -6,7 +6,7 @@ const ToyDetails = () => {
       const {toy_name,available_quantity,toy_pic,subcategory,seller_name,seller_email,rating,price,description}=useLoaderData()
       
       return (
-            <div>
+            <div className='my-8'>
                 <div className="bg-teal-300 rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300 ease-in-out transform hover:scale-105">
       <div className="relative">
         <img src={img} alt={toy_name} className="w-1/4 h-auto mb-4 rounded-md" />
