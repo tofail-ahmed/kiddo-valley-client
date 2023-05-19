@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Nav from './Nav';
 import logo from '../../../assets/Valley.png'
 import { AuthContext } from '../../../Providers/AuthProvider';
+import ActiveLink from '../../../ActiveLink/ActiveLink';
 
 const Header = () => {
 
@@ -21,7 +22,7 @@ const Header = () => {
 
 
       return (
-            <div >
+            <div className='border-4' >
 
 
                   <div className="navbar bg-base-100">
@@ -45,11 +46,11 @@ const Header = () => {
                         </div>
                         <div className="navbar-center hidden lg:flex">
                               <ul className="menu menu-horizontal px-1">
-                                    <li><Link className='text-md font-bold' to={'/'}>Home  </Link></li>
-                                    <li><Link className='text-md font-bold' to={'/alltoys'}>  All toys  </Link></li>
-                                    <li><Link className='text-md font-bold' to={'/blog'}>  Blog  </Link></li>
-                                    <li><Link className='text-md font-bold' to={'/addtoys'}>  Add toys  </Link></li>
-                                    <li><Link className='text-md font-bold' to={'/mytoys'}>  My toys   </Link></li>
+                                    <li><ActiveLink className='text-md font-bold' to={'/'}>Home  </ActiveLink></li>
+                                    <li><ActiveLink className='text-md font-bold' to={'/alltoys'}>  All toys  </ActiveLink></li>
+                                    <li><ActiveLink className='text-md font-bold' to={'/blog'}>  Blog  </ActiveLink></li>
+                                    <li><ActiveLink className='text-md font-bold' to={'/addtoys'}>  Add toys  </ActiveLink></li>
+                                    <li><ActiveLink className='text-md font-bold' to={'/mytoys'}>  My toys   </ActiveLink></li>
                                     
                               </ul>
                         </div>
@@ -58,11 +59,13 @@ const Header = () => {
 
 
                               {
-                                    user ? <><p>{user.displayName}</p>
-                                          <img className='w-1/4 tooltip'  data-tip={user.displayName} src={user.photoURL} alt="" />
+                                    user ? <>
+
+                                          <img className='w-[50px] border-4 me-4' style={{ borderRadius: "50%", height: "50px" }} title={user.displayName} src={user.photoURL} />
+
                                           <button className='btn btn-error' onClick={handleLogout}>LogOut</button>
                                     </>
-                                          : <Link className='text-md font-bold btn btn-info' to={'/login'}>  Login   </Link>
+                                          : <ActiveLink className='text-md font-bold btn btn-info' to={'/login'}>  Login   </ActiveLink>
                               }
                         </div>
                   </div>
