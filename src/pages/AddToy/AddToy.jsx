@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import DynamicTitle from '../../DynamicTitle/DynamicTitle';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const AddToy = () => {
+      const {user}=useContext(AuthContext)
       const pageTitle='Kiddo_Valley-AddToys'
       const handleAddToy = e => {
             e.preventDefault()
@@ -20,7 +22,7 @@ const AddToy = () => {
                   toy_pic: url,
                   toy_name: toyName,
                   seller_name:sellerName,
-                  seller_email: sellerEmail,
+                  seller_email: user?.email,
                   available_quantity: quantity,
                   subcategory: subCategory,
                   price: price,
@@ -66,7 +68,7 @@ const AddToy = () => {
                                     </div>
                                     <div className="form-control">
 
-                                          <input type="text" name='sellerEmail' placeholder="Seller Email" className="input input-bordered" />
+                                          <input type="text" name='sellerEmail' defaultValue={user?.email} className="input input-bordered" />
                                     </div>
 
                                     <div className="form-control">
