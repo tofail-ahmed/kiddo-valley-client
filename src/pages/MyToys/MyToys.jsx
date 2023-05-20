@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import DynamicTitle from '../../DynamicTitle/DynamicTitle';
 import { AuthContext } from '../../Providers/AuthProvider';
 import ToyTable from './ToyTable';
+import { Link } from 'react-router-dom';
 
 const MyToys = () => {
       const pageTitle='Kiddo_Valley-MyToys'
@@ -18,6 +19,9 @@ const MyToys = () => {
             })
       },[user])
       console.log("my toys",myToys);
+
+
+     
 
 
       const handleDelete = id => {
@@ -71,7 +75,7 @@ const MyToys = () => {
             <td>{myToy.rating}</td>
             <td>{myToy.available_quantity}</td>
             <td className='w-[400px]' >{myToy.description}</td>
-            <td> <button className='btn btn-primary'>Update</button> </td>
+            <td> <Link to={`/mytoys/${myToy._id}`}> <button className='btn btn-primary' >Update</button></Link> </td>
             <td> <button className='btn btn-warning' onClick={() => handleDelete(myToy._id)} >Delete</button> </td>
           </tr>
         ))}
@@ -93,3 +97,4 @@ export default MyToys;
            
 //       )   
 // }
+// onClick={() => handleBookingConfirm(myToy._id)}
