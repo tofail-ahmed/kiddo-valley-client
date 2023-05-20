@@ -33,22 +33,14 @@ const AllToys = () => {
                                     <tbody>
                                           
                                                 {
-                                                      allToys.map((toy, idx) =>
-
-                                                            <Toy
+                                                allToys.map((toy, idx) => <Toy
                                                                   key={toy._id}
                                                                   toy={toy}
                                                                   idx={idx}
-                                                            >
-
-                                                            </Toy>
-                                                            
-
-
-
-                                                      )
-                                                }
-                                          
+                                                      >
+                                                      </Toy>
+                                                )
+                                          }
                                     </tbody>
                               </table>
 
@@ -58,7 +50,13 @@ const AllToys = () => {
       );
 };
 
+
 export default AllToys;
+
+
+
+
+
 
 
 
