@@ -7,7 +7,7 @@ const AllToys = () => {
       const pageTitle='Kiddo_Valley-AllToys'
       const [allToys, setAllToys] = useState([])
       useEffect(() => {
-            fetch('http://localhost:5000/alltoys')
+            fetch('https://kiddo-valley-server.vercel.app/alltoys')
                   .then(res => res.json())
                   .then(data => setAllToys(data))
       }, [])
