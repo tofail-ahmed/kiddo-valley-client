@@ -2,17 +2,49 @@ import React, { useState } from 'react';
 import DynamicTitle from '../../DynamicTitle/DynamicTitle';
 import { useEffect } from 'react';
 import Toy from './Toy';
+import { useLoaderData } from 'react-router-dom';
 
 const AllToys = () => {
       const pageTitle='Kiddo_Valley-AllToys'
+      const { totalToys } = useLoaderData()
       const [allToys, setAllToys] = useState([])
-      useEffect(() => {
-            fetch('https://kiddo-valley-server.vercel.app/alltoys')
-                  .then(res => res.json())
-                  .then(data => setAllToys(data))
-      }, [])
-      // console.log(allToys);
+      const [pageNumber, setPageNumber] = useState(0)
+      const [itemsPerPage, setItemsPerPage] = useState(10)
 
+
+      const totalPage = Math.ceil(totalToys / itemsPerPage)
+      const pageNumbers = [...Array(totalPage).keys()]
+
+
+      // useEffect(() => {
+      //       fetch(`http://localhost:5000/alltoys?page=${pageNumber}&limit=${itemsPerPage}`)
+      //             .then(res => res.json())
+      //             .then(data => setAllToys(data))
+      // }, [])
+      // // console.log(allToys);
+      // console.log(totalToys);
+
+      useEffect(() => {
+            fetchData();
+      }, [pageNumber, itemsPerPage]);
+
+      const fetchData = async () => {
+            try {
+                  const response = await fetch(`http://localhost:5000/alltoys?page=${pageNumber}&limit=${itemsPerPage}`);
+                  const result = await response.json();
+                  setAllToys(result)
+            }
+            catch (error) {
+                  console.error('error fetching data', error);
+            }
+      }
+
+
+
+      const handleItemsPerPageChange = (e) => {
+            const newItemsPerPage = parseInt(e.target.value, 10);
+            setItemsPerPage(newItemsPerPage);
+      }
 
 
       const handleSearch = e => {
@@ -65,6 +97,22 @@ const AllToys = () => {
 
                         </div>
                   </div>
+
+                  {/* //pagination */}
+
+                  <div className='text-center my-8 bg-slate-400 p-4'>
+
+                        
+                        {
+                              pageNumbers.map(number => <button className={pageNumber === number ? "bg-green-500 mx-4" : 'bg-cyan-400 mx-4'} onClick={() => setPageNumber(number)} key={number}>PAGE:{number+1}</button>)
+                        }
+                        <select id="itemsPerPage" value={itemsPerPage} onChange={handleItemsPerPageChange}>
+                              <option value="5">5</option>
+                              <option value="10">10</option>
+                              <option value="20">20</option>
+                              <option value="50">50</option>
+                        </select>
+                  </div >
             </div>
       );
 };

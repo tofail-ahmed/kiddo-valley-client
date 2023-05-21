@@ -4,6 +4,7 @@ import HomeBanner from './HomeBanner';
 import HomeGallery from './HomeGallery';
 import SubCategory from './SubCategory';
 import Education from './Education';
+import FeatureSection from './FeatureSection';
 
 const Home = () => {
       const pageTitle='Kiddo_Valley-Home'
@@ -16,7 +17,10 @@ const Home = () => {
                  <HomeGallery></HomeGallery>
                   <SubCategory></SubCategory>
                  </div>
+                  <div className='md:flex gap-4'>
                  <Education></Education>
+                        <FeatureSection></FeatureSection>
+                  </div>
             </div>
       );
 };
