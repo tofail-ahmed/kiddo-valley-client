@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 const UpdateToy = () => {
       const { user } = useContext(AuthContext)
       const { _id, toy_pic, toy_name, seller_name, seller_email, available_quantity, subcategory, price, rating, description } = useLoaderData()
-
+      const notify = () => toast("Toy Updated!");
 
       const handleUpdateToy = e => {
             e.preventDefault()
@@ -51,6 +53,10 @@ const UpdateToy = () => {
                   .then(res => res.json())
                   .then(data => {
                         console.log(data);
+                        if (data.modifiedCount > 0) {
+                              notify()
+
+                        }
                   })
 
 

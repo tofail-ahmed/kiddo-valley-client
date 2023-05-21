@@ -1,6 +1,6 @@
-import React from 'react';
+
 import DynamicTitle from '../../DynamicTitle/DynamicTitle';
-import notFound from '../../../src/assets/notFound-kiddoValley.webp'
+import notFound from '../../assets/gallery/notFound-kiddoValley.webp'
 import { Link } from 'react-router-dom';
 
 const NotFound = () => {

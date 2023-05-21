@@ -67,10 +67,11 @@ const router = createBrowserRouter([
         loader: ({ params }) => fetch(`https://kiddo-valley-server.vercel.app/allToys/${params.id}`)
       }
     ],
+    errorElement: <NotFound></NotFound>
     
   },
   {
-    path:'/*',
+    path: '*',
     element:<NotFound></NotFound>
   }
 ]);

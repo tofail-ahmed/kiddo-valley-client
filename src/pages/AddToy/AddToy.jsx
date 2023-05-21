@@ -1,8 +1,11 @@
 import React, { useContext } from 'react';
 import DynamicTitle from '../../DynamicTitle/DynamicTitle';
 import { AuthContext } from '../../Providers/AuthProvider';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddToy = () => {
+      const notify = () => toast("Toy Added!");
       const {user}=useContext(AuthContext)
       const pageTitle='Kiddo_Valley-AddToys'
       const handleAddToy = e => {
@@ -42,6 +45,9 @@ const AddToy = () => {
                   .then(res => res.json())
                   .then(data => {
                         console.log(data)
+                        if (data.insertedId) {
+                              notify()
+                        }
 
                   })
       }

@@ -1,26 +1,27 @@
 import React, { useContext, useEffect, useState } from 'react';
 import DynamicTitle from '../../DynamicTitle/DynamicTitle';
 import { AuthContext } from '../../Providers/AuthProvider';
-
 import { Link } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 const MyToys = () => {
       const pageTitle='Kiddo_Valley-MyToys'
       const {user}=useContext(AuthContext)
       const [myToys,setMyToys]=useState([])
       const [sortOrder, setSortOrder] = useState('desc'); // Track the current sort order
-
+      const notify = () => toast("Toy Deletd!");
 
 
 
       useEffect(()=>{
-            // fetch(`https://kiddo-valley-server.vercel.app/mytoys/${user?.email}`)
-            // fetch(`https://kiddo-valley-server.vercel.app/mytoys/${user?.email}?sort=${sortOrder}`)
+
 
             fetch(`https://kiddo-valley-server.vercel.app/mytoys/${user?.email}?sort=${sortOrder}`)
             .then(res=>res.json())
             .then(data=>{
                   setMyToys(data);
+
             })
       }, [user, sortOrder])
 
@@ -38,6 +39,10 @@ const MyToys = () => {
                   })
                         .then(res => res.json()).then(data => {
                               console.log(data)
+                              if (data.deletedCount > 0) {
+                                    notify()
+
+                              }
                               const remaing = myToys.filter(myToy => myToy._id !== id)
                               setMyToys(remaing)
                         })
