@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import img1 from '../../assets/edu-fun/learningisfun-1.webp'
 import img2 from '../../assets/edu-fun/learningisfun-2.webp'
 import img3 from '../../assets/edu-fun/learningisfun-3.webp'
@@ -6,8 +8,19 @@ import { Link } from 'react-router-dom';
 
 
 const Education = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1800, // Duration of animation in milliseconds (default: 1000)
+      easing: 'ease-out', // Easing function for animation (default: 'ease')
+      //   once: true, // Whether animation should only happen once (default: false)
+      mirror: false, // Whether elements should animate out while scrolling past them (default: false)
+    });
+  }, []);
       return (
-            <section className="bg-slate-400 py-16 md:w-1/2">
+
+        <div data-aos="slide-left">
+        
+          <section className="bg-slate-400 py-16 ">
             <div className="container mx-auto px-4">
               <div className='md:flex'>
                 <img className='md:w-[13vw] m-2' src={img1} alt="" />
@@ -31,7 +44,11 @@ const Education = () => {
               </div>
             </div>
           </section>
+        </div>
       );
 };
 
 export default Education;
+
+
+

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Chemistry = () => {
       const [chemistry, setChemistry] = useState([])
       useEffect(() => {
-            fetch(`http://localhost:5000/category/Chemistry%20Toy`
+            fetch(`https://kiddo-valley-server.vercel.app/category/Chemistry%20Toy`
 
             )
                   .then(res => res.json())

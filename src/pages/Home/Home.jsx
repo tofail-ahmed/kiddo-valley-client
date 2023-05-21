@@ -5,9 +5,11 @@ import HomeGallery from './HomeGallery';
 import SubCategory from './SubCategory';
 import Education from './Education';
 import FeatureSection from './FeatureSection';
+import Aos from '../AOS/Aos';
 
 const Home = () => {
       const pageTitle='Kiddo_Valley-Home'
+     
       return (
             <div>
                    <DynamicTitle title={pageTitle} />
@@ -21,6 +23,7 @@ const Home = () => {
                  <Education></Education>
                         <FeatureSection></FeatureSection>
                   </div>
+                  <Aos></Aos>
             </div>
       );
 };

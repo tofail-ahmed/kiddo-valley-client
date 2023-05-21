@@ -42,7 +42,7 @@ const Header = () => {
                                     </ul>
                               </div>
                              <Link className='w-1/6' to={'/'}> <  img src={logo} alt="" /></Link>
-                             <Link to={'/'}> <a className="btn btn-ghost normal-case text-xl" >daisyUI</a></Link>
+                             <Link to={'/'}> <a className="btn btn-ghost normal-case text-4xl text-sky-600" >Kiddo Valley</a></Link>
                         </div>
                         <div className="navbar-center hidden lg:flex">
                               <ul className="menu menu-horizontal px-1">

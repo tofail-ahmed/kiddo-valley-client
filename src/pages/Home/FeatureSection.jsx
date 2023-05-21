@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
 
 const FeatureSection = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1800, // Duration of animation in milliseconds (default: 1000)
+      easing: 'ease-out', // Easing function for animation (default: 'ease')
+      //   once: true, // Whether animation should only happen once (default: false)
+      mirror: false, // Whether elements should animate out while scrolling past them (default: false)
+    });
+  }, []);
   return (
-    <section className="bg-zinc-500 py-16">
+    <section className="bg-zinc-500 py-16" data-aos="slide-right">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-white mb-6">Features That Inspire</h2>

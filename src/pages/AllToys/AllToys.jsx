@@ -24,7 +24,7 @@ const AllToys = () => {
 
       const fetchData = async () => {
             try {
-                  const response = await fetch(`http://localhost:5000/alltoys?page=${pageNumber}&limit=${itemsPerPage}`);
+                  const response = await fetch(`https://kiddo-valley-server.vercel.app/alltoys?page=${pageNumber}&limit=${itemsPerPage}`);
                   const result = await response.json();
                   setAllToys(result)
             }
@@ -46,7 +46,7 @@ const AllToys = () => {
             const form=e.target
             const text = form.text.value;
             console.log(text);
-            fetch(`http://localhost:5000/search/${text}`)
+            fetch(`https://kiddo-valley-server.vercel.app/search/${text}`)
              .then(res=>res.json())
              .then(data=>{
                   setAllToys(data);

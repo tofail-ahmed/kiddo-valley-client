@@ -14,10 +14,10 @@ const MyToys = () => {
 
 
       useEffect(()=>{
-            // fetch(`http://localhost:5000/mytoys/${user?.email}`)
-            // fetch(`http://localhost:5000/mytoys/${user?.email}?sort=${sortOrder}`)
+            // fetch(`https://kiddo-valley-server.vercel.app/mytoys/${user?.email}`)
+            // fetch(`https://kiddo-valley-server.vercel.app/mytoys/${user?.email}?sort=${sortOrder}`)
 
-            fetch(`http://localhost:5000/mytoys/${user?.email}?sort=${sortOrder}`)
+            fetch(`https://kiddo-valley-server.vercel.app/mytoys/${user?.email}?sort=${sortOrder}`)
             .then(res=>res.json())
             .then(data=>{
                   setMyToys(data);
@@ -33,7 +33,7 @@ const MyToys = () => {
       const handleDelete = id => {
             const proceed = confirm("Are you confirm to delete this servie?")
             if (proceed) {
-                  fetch(`http://localhost:5000/alltoys/${id}`, {
+                  fetch(`https://kiddo-valley-server.vercel.app/alltoys/${id}`, {
                         method: "DELETE"
                   })
                         .then(res => res.json()).then(data => {

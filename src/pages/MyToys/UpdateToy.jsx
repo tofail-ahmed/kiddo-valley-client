@@ -39,7 +39,7 @@ const UpdateToy = () => {
             console.log("toy data from form", toy);
 
 
-            fetch(`http://localhost:5000/alltoys/${id}`, {
+            fetch(`https://kiddo-valley-server.vercel.app/alltoys/${id}`, {
                   method: "PUT",
                   headers: {
                         "content-type": "application/json"
@@ -122,7 +122,7 @@ export default UpdateToy;
 
 
 
-// fetch(`http://localhost:5000/alltoys/${id}`, {
+// fetch(`https://kiddo-valley-server.vercel.app/alltoys/${id}`, {
 //       method: "PATCH",
 //       headers: {
 //             'content-type': 'application/json'

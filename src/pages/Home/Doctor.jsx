@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Doctor = () => {
       const [math, setMath] = useState([])
       useEffect(() => {
-            fetch(`http://localhost:5000/category/Doctor%20Toy`
+            fetch(`https://kiddo-valley-server.vercel.app/category/Doctor%20Toy`
 
             )
                   .then(res => res.json())
