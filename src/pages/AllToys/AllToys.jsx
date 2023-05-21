@@ -9,20 +9,14 @@ const AllToys = () => {
       const { totalToys } = useLoaderData()
       const [allToys, setAllToys] = useState([])
       const [pageNumber, setPageNumber] = useState(0)
-      const [itemsPerPage, setItemsPerPage] = useState(10)
+      const [itemsPerPage, setItemsPerPage] = useState(20)
 
 
       const totalPage = Math.ceil(totalToys / itemsPerPage)
       const pageNumbers = [...Array(totalPage).keys()]
 
 
-      // useEffect(() => {
-      //       fetch(`http://localhost:5000/alltoys?page=${pageNumber}&limit=${itemsPerPage}`)
-      //             .then(res => res.json())
-      //             .then(data => setAllToys(data))
-      // }, [])
-      // // console.log(allToys);
-      // console.log(totalToys);
+      
 
       useEffect(() => {
             fetchData();
@@ -30,7 +24,7 @@ const AllToys = () => {
 
       const fetchData = async () => {
             try {
-                  const response = await fetch(`http://localhost:5000/alltoys?page=${pageNumber}&limit=${itemsPerPage}`);
+                  const response = await fetch(`https://kiddo-valley-server.vercel.app/alltoys?page=${pageNumber}&limit=${itemsPerPage}`);
                   const result = await response.json();
                   setAllToys(result)
             }
@@ -104,7 +98,7 @@ const AllToys = () => {
 
                         
                         {
-                              pageNumbers.map(number => <button className={pageNumber === number ? "bg-green-500 mx-4" : 'bg-cyan-400 mx-4'} onClick={() => setPageNumber(number)} key={number}>PAGE:{number+1}</button>)
+                              pageNumbers.map(number => <button className={pageNumber === number ? "bg-green-500 text-white mx-4 rounded-lg p-4 font-bold" : 'bg-cyan-400 mx-4 rounded-lg p-2 font-bold'} onClick={() => setPageNumber(number)} key={number}>PAGE:{number+1}</button>)
                         }
                         <select id="itemsPerPage" value={itemsPerPage} onChange={handleItemsPerPageChange}>
                               <option value="5">5</option>

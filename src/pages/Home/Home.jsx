@@ -13,11 +13,11 @@ const Home = () => {
                    <DynamicTitle title={pageTitle} />
                   <h2>This is Home</h2>
                   <HomeBanner></HomeBanner>
-                 <div className='md:flex gap-4'>
+                 <div className='md:flex gap-4 my-8'>
                  <HomeGallery></HomeGallery>
                   <SubCategory></SubCategory>
                  </div>
-                  <div className='md:flex gap-4'>
+                  <div className='md:flex gap-4 my-8'>
                  <Education></Education>
                         <FeatureSection></FeatureSection>
                   </div>

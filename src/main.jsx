@@ -42,7 +42,7 @@ const router = createBrowserRouter([
       },{
         path:'/alltoys',
         element:<AllToys></AllToys>,
-        loader:()=>fetch('http://localhost:5000/totalToys')
+        loader:()=>fetch('https://kiddo-valley-server.vercel.app/totalToys')
       },{
 
         path:'/:id',

@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const FeatureSection = () => {
   return (
-    <section className="bg-purple-800 py-16">
+    <section className="bg-zinc-500 py-16">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-white mb-6">Features That Inspire</h2>
@@ -34,6 +35,7 @@ const FeatureSection = () => {
                 Ensuring a safe and immersive learning environment that keeps children motivated and engaged.
               </p>
             </div>
+            <><Link className='btn btn-active' to={"/blog"}>See More</Link></>
           </div>
         </div>
       </div>
