@@ -32,7 +32,7 @@ const AddToy = () => {
 
             }
             console.log(toy);
-            fetch('https://kiddo-valley-server.vercel.app/addtoy', {
+            fetch('http://localhost:5000/addtoy', {
                   method: 'POST',
                   headers: {
                         'content-type': 'application/json'

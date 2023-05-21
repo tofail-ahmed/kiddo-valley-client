@@ -1,23 +1,29 @@
 import React, { useContext, useEffect, useState } from 'react';
 import DynamicTitle from '../../DynamicTitle/DynamicTitle';
 import { AuthContext } from '../../Providers/AuthProvider';
-import ToyTable from './ToyTable';
+
 import { Link } from 'react-router-dom';
 
 const MyToys = () => {
       const pageTitle='Kiddo_Valley-MyToys'
       const {user}=useContext(AuthContext)
       const [myToys,setMyToys]=useState([])
+      const [sortOrder, setSortOrder] = useState('desc'); // Track the current sort order
+
 
 
 
       useEffect(()=>{
-            fetch(`https://kiddo-valley-server.vercel.app/mytoys/${user?.email}`)
+            // fetch(`http://localhost:5000/mytoys/${user?.email}`)
+            // fetch(`http://localhost:5000/mytoys/${user?.email}?sort=${sortOrder}`)
+
+            fetch(`http://localhost:5000/mytoys/${user?.email}?sort=${sortOrder}`)
             .then(res=>res.json())
             .then(data=>{
                   setMyToys(data);
             })
-      },[user])
+      }, [user, sortOrder])
+
       console.log("my toys",myToys);
 
 
@@ -27,7 +33,7 @@ const MyToys = () => {
       const handleDelete = id => {
             const proceed = confirm("Are you confirm to delete this servie?")
             if (proceed) {
-                  fetch(`https://kiddo-valley-server.vercel.app/alltoys/${id}`, {
+                  fetch(`http://localhost:5000/alltoys/${id}`, {
                         method: "DELETE"
                   })
                         .then(res => res.json()).then(data => {
@@ -38,6 +44,11 @@ const MyToys = () => {
             }
       }
 
+      const toggleSortOrder = () => {
+            const newSortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
+            setSortOrder(newSortOrder);
+      };
+
 
 
 
@@ -45,6 +56,10 @@ const MyToys = () => {
       return (
             <div>
                    <DynamicTitle title={pageTitle} />
+                  <div className='flex m-4 text-center'> <p>Sort By Price</p>
+                        <button className='btn btn-sm' onClick={toggleSortOrder}>
+                              {sortOrder === 'asc' ? '▲' : '▼'}
+                        </button></div>
                   
                   <div>
                   <table>

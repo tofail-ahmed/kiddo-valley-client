@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Physics = () => {
       const [physics, setPhysics] = useState([])
       useEffect(() => {
-            fetch(`https://kiddo-valley-server.vercel.app/category/Physics%20Toy`
+            fetch(`http://localhost:5000/category/Physics%20Toy`
 
             )
                   .then(res => res.json())

@@ -2,9 +2,9 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import DynamicTitle from '../../DynamicTitle/DynamicTitle';
 import { AuthContext } from '../../Providers/AuthProvider';
-
+import { FaGoogle, FaGithub } from "react-icons/fa";
 const Login = () => {
-      const { signIn } = useContext(AuthContext)
+      const { signIn, googleSignIn, githubSignIn } = useContext(AuthContext)
       const pageTitle = 'Kiddo_Valley-Login';
 
       const [email, setEmail] = useState('');
@@ -42,6 +42,26 @@ const Login = () => {
             })
 
       };
+      const handleGoogleSignIn = () => {
+            googleSignIn()
+                  .then(result => {
+                        const loggedUser = result.user
+                        console.log(loggedUser);
+                  })
+                  .catch(error => {
+                        console.log(error);
+                  })
+      }
+      const handleGithubSignIn = () => {
+            githubSignIn()
+                  .then(result => {
+                        const loggedUser = result.user
+                        console.log(loggedUser);
+                  })
+                  .catch(error => {
+                        console.log(error);
+                  })
+      }
 
 
 
@@ -80,6 +100,14 @@ const Login = () => {
 
                               </form>
                               <p>Haven't any account?<Link className='text-blue-700 font-bold' to={'/signup'}>SignUp</Link></p>
+                        <div>
+                              <div>
+                                    <button onClick={handleGoogleSignIn} className="btn  btn-info my-4 gap-4"><FaGoogle></FaGoogle>  Google SIgnIn</button>
+                              </div>
+                              <div>
+                                    <button onClick={handleGithubSignIn} className="btn  btn-info text-parimary gap-4"><FaGithub ></FaGithub>  Github SIgnIn</button>
+                              </div>
+                        </div>
                         </div>
                   </div>
             </div>
