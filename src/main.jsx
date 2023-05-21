@@ -19,6 +19,7 @@ import NotFound from './pages/NotFound/NotFound.jsx';
 import AuthProvider from './Providers/AuthProvider.jsx';
 import ToyDetails from './pages/AllToys/ToyDetails.jsx';
 import UpdateToy from './pages/MyToys/UpdateToy.jsx';
+import Details from './pages/Home/Details.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
         element:<UpdateToy></UpdateToy>,
         loader:({params})=>fetch(`http://localhost:5000/allToys/${params.id}`)
 
+      }, {
+        path: '/details/:id',
+        element: <Details></Details>,
+        loader: ({ params }) => fetch(`http://localhost:5000/allToys/${params.id}`)
       }
     ],
     

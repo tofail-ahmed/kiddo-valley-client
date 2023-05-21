@@ -5,7 +5,7 @@ import img3 from '../../assets/edu-toy-3.jpg'
 
 const HomeGallery = () => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 my-8">
+    <div className="grid grid-cols-1  md:grid-cols-2 gap-4 my-8 md:w-1/2">
       <div className="gallery-item border-4 rounded">
         <img src={img1} alt="Gallery Image 1" className="w-[50vw] h-[50vh]" />
         <div className="gallery-caption p-2">

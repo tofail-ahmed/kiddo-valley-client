@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Chemistry = () => {
-      const [chemistry, setChemistry] = useState([])
+const Doctor = () => {
+      const [math, setMath] = useState([])
       useEffect(() => {
-            fetch(`http://localhost:5000/category/Chemistry%20Toy`
+            fetch(`http://localhost:5000/category/Doctor%20Toy`
 
             )
                   .then(res => res.json())
                   .then(data => {
-                        setChemistry(data);
+                        setMath(data);
                   })
       }, [])
-      console.log(chemistry);
+      console.log(math);
       return (
             <div>
-               {
-                        chemistry.map(toy =>
+                  {
+                        math.map(toy =>
                               <div key={toy._id} className="  p-4">
                                     <div className="bg-white rounded-lg shadow-lg ">
                                           <div className='flex '>
@@ -48,4 +48,9 @@ const Chemistry = () => {
       );
 };
 
-export default Chemistry;
+export default Doctor;
+
+
+{/* <div className="flex">
+      
+</div> */}

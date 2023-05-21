@@ -4,15 +4,17 @@ import 'react-tabs/style/react-tabs.css';
 import Math from './Math';
 import Physics from './Physics';
 import Chemistry from './Chemistry';
+import Doctor from './Doctor';
 
 const SubCategory = () => {
       return (
-            <div className='text-center bg-slate-200 '>
+            <div className='text-center bg-slate-200  md:w-1/2 '>
                   <Tabs>
                         <TabList >
                               <Tab>Title 1</Tab>
                               <Tab>Title 2</Tab>
                               <Tab>Title 3</Tab>
+                              <Tab>Title 4</Tab>
                         </TabList>
 
                         <TabPanel>
@@ -26,6 +28,10 @@ const SubCategory = () => {
                         <TabPanel>
                               <h3>Chemistr Toy</h3>
                               <Chemistry></Chemistry>
+                        </TabPanel>
+                        <TabPanel>
+                              <h3>Chemistr Toy</h3>
+                              <Doctor></Doctor>
                         </TabPanel>
                   </Tabs>
             </div>

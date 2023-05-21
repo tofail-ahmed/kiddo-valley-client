@@ -11,8 +11,10 @@ const Home = () => {
                    <DynamicTitle title={pageTitle} />
                   <h2>This is Home</h2>
                   <HomeBanner></HomeBanner>
-                  <HomeGallery></HomeGallery>
+                 <div className='md:flex gap-4'>
+                 <HomeGallery></HomeGallery>
                   <SubCategory></SubCategory>
+                 </div>
             </div>
       );
 };
