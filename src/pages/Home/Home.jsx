@@ -3,6 +3,7 @@ import DynamicTitle from '../../DynamicTitle/DynamicTitle';
 import HomeBanner from './HomeBanner';
 import HomeGallery from './HomeGallery';
 import SubCategory from './SubCategory';
+import Education from './Education';
 
 const Home = () => {
       const pageTitle='Kiddo_Valley-Home'
@@ -15,6 +16,7 @@ const Home = () => {
                  <HomeGallery></HomeGallery>
                   <SubCategory></SubCategory>
                  </div>
+                 <Education></Education>
             </div>
       );
 };
