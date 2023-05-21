@@ -20,6 +20,7 @@ import AuthProvider from './Providers/AuthProvider.jsx';
 import ToyDetails from './pages/AllToys/ToyDetails.jsx';
 import UpdateToy from './pages/MyToys/UpdateToy.jsx';
 import Details from './pages/Home/Details.jsx';
+import PrivateRoute from './pages/AddToy/routes/PrivateRoute.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -51,10 +52,10 @@ const router = createBrowserRouter([
       },
       {
         path:'/addtoys',
-        element:<AddToy></AddToy>
+        element:<PrivateRoute><AddToy></AddToy></PrivateRoute>
       },{
         path:'/mytoys',
-        element:<MyToys></MyToys>
+        element:<PrivateRoute><MyToys></MyToys></PrivateRoute>
       },{
         path:'/mytoys/:id',
         element:<UpdateToy></UpdateToy>,

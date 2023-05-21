@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import DynamicTitle from '../../DynamicTitle/DynamicTitle';
 import { AuthContext } from '../../Providers/AuthProvider';
 
@@ -9,6 +9,11 @@ const Login = () => {
 
       const [email, setEmail] = useState('');
       const [password, setPassword] = useState('');
+      const navigate = useNavigate()
+      const location = useLocation()
+      console.log(location)
+
+      const from = location.state?.from?.pathname || '/'
 
 
       const handleLogin = (e) => {
@@ -29,6 +34,8 @@ const Login = () => {
             signIn(email,password)
             .then(result=>{
                   console.log(result.user);
+                 
+                  navigate(from, { replace: true })
             })
             .then(error=>{
                   console.log(error.message);

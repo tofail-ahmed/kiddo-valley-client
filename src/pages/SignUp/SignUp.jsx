@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import DynamicTitle from '../../DynamicTitle/DynamicTitle';
+import { FaGoogle,FaGithub } from "react-icons/fa";
 
 
 import  { useState } from 'react';
@@ -8,7 +9,7 @@ import { AuthContext } from '../../Providers/AuthProvider';
 
 const SignUp = () => {
       const pageTitle='Kiddo_Valley-SignUp'
-      const {createUser,updateUserProfile}=useContext(AuthContext)
+      const { createUser, updateUserProfile,googleSignIn, githubSignIn} = useContext(AuthContext)
 
 
       const [name, setName] = useState('');
@@ -44,6 +45,26 @@ const SignUp = () => {
                   console.log(err);
             })
       };
+      const handleGoogleSignIn = () => {
+            googleSignIn()
+                  .then(result => {
+                        const loggedUser = result.user
+                        console.log(loggedUser);
+                  })
+                  .catch(error => {
+                        console.log(error);
+                  })
+      }
+      const handleGithubSignIn = () => {
+            githubSignIn()
+                  .then(result => {
+                        const loggedUser = result.user
+                        console.log(loggedUser);
+                  })
+                  .catch(error => {
+                        console.log(error);
+                  })
+      }
 
       return (
             <div>
@@ -107,6 +128,12 @@ const SignUp = () => {
 
                               </form>
                               <p>Already have an account?<Link className='text-blue-700 font-bold' to={'/login'}>Go Login</Link></p>
+                              <div>
+                                    <button onClick={handleGoogleSignIn} className="btn  btn-info my-4 gap-4"><FaGoogle></FaGoogle>  Google SIgnIn</button>
+                              </div>
+                              <div>
+                                    <button onClick={handleGithubSignIn} className="btn  btn-info text-parimary gap-4"><FaGithub ></FaGithub>  Github SIgnIn</button>
+                              </div>
                         </div>
                   </div>
                   </div>
